@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Execute · flx Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<script>
+  (function () {
+    var r = document.documentElement; r.classList.add('js');
+    try { if (sessionStorage.getItem('nav')) { r.classList.add('covered'); sessionStorage.removeItem('nav'); } } catch (e) {}
+    setTimeout(function () { r.classList.add('failsafe'); }, 6000);
+  })();
+</script>
+</head>
+<body>
+<div class="shutter" aria-hidden="true"><i class="sh-line"></i><span class="label sh-label">Loading</span></div>
+
+<header class="nav">
+  <a class="brand" href="index.html" data-dest="Home" aria-label="flx playbook home">flx<b>/</b>playbook</a>
+  <nav aria-label="Chapters">
+    <ul class="nav-links">
+      <li><a href="concepts.html" data-dest="01 / Concepts"><span>01</span>Concepts</a></li>
+      <li><a href="risk.html" data-dest="02 / Risk"><span>02</span>Risk</a></li>
+      <li><a href="execute.html" aria-current="page"><span>03</span>Execute</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero wrap">
+    <p class="label accent" data-rise>03 / Execute · Putting it together</p>
+    <h1 class="display" aria-label="Sweep, then return">
+      <span class="line" data-split>Sweep,</span>
+      <span class="line dim" data-split>then return</span>
+    </h1>
+    <div class="page-hero-row">
+      <p class="lede" data-rise>Two steps, three timeframes. <strong>The hour chart picks the direction, the five-minute finds the sweep and the order block, the one-minute times the entry.</strong></p>
+      <div class="tf-strip" data-rise><span class="chip">1H · bias</span><span class="chip accent">5M · sweep + OB</span><span class="chip">1M · entry</span></div>
+    </div>
+  </section>
+
+  <div class="steps">
+    <section class="step wrap" aria-labelledby="s1">
+      <div class="step-meta">
+        <p class="display n" aria-hidden="true">1</p>
+        <p class="label accent">Step 1 · 5 minute</p>
+        <h2 class="display" id="s1">Wait for the liquidity sweep</h2>
+      </div>
+      <div class="chapter-body">
+        <ul class="params">
+          <li><b>Timeframe</b><span>Five-minute chart.</span></li>
+          <li><b>Trigger</b><span>Price crosses a liquidity zone, then rejects in the opposite direction. <strong style="color: var(--ink)">The rejection should be fast, not slow.</strong></span></li>
+          <li><b>Filter</b><span>Only take sweeps in the direction of the general market trend. Check the one-hour chart, or look at what happened in the New York session.</span></li>
+        </ul>
+        <div class="pair">
+          <figure class="fig"><div class="fig-frame" style="aspect-ratio: 550 / 262"><img src="img/fig-5m-sweep.webp" alt="Five-minute chart where price probes a range before rejecting" loading="lazy" width="550" height="262"></div><figcaption class="label"><span>Fig 3.1a</span><span>5M sweep</span></figcaption></figure>
+          <figure class="fig"><div class="fig-frame contain" style="aspect-ratio: 192 / 834; max-height: 60vh"><img src="img/fig-1h-trend.webp" alt="One-hour chart trending strongly upward" loading="lazy" width="192" height="834"></div><figcaption class="label"><span>Fig 3.1b</span><span>1H trend</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="step wrap" aria-labelledby="s2">
+      <div class="step-meta">
+        <p class="display n" aria-hidden="true">2</p>
+        <p class="label accent">Step 2 · 5M → 1M</p>
+        <h2 class="display" id="s2">Wait for price to return to the order block</h2>
+      </div>
+      <div class="chapter-body">
+        <ul class="params">
+          <li><b>Mark</b><span>Draw the order block with the rectangle tool on the five-minute chart. For a long, it's the last down candle before the sweep; for a short, the last up candle. Wick to wick.</span></li>
+          <li><b>Wait</b><span>Drop to the one-minute chart and wait for price to retrace into the block.</span></li>
+        </ul>
+        <figure class="fig"><div class="fig-frame" style="aspect-ratio: 1518 / 1052"><img src="img/fig-ob-return.webp" alt="Bearish order block marked above a liquidity sweep with price retracing below" loading="lazy" width="1518" height="1052"></div><figcaption class="label"><span>Fig 3.2</span><span>Bearish OB above the sweep</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="step wrap" aria-labelledby="s3">
+      <div class="step-meta">
+        <p class="display n" aria-hidden="true">3</p>
+        <p class="label accent">Step 3 · Before the click</p>
+        <h2 class="display" id="s3">Place stop and target at liquidity</h2>
+      </div>
+      <div class="chapter-body">
+        <ul class="params">
+          <li><b>Stop</b><span>Beyond the swept liquidity, with a few ticks of clearance so a wick can't take you out.</span></li>
+          <li><b>Target</b><span>The next draw on liquidity, or at least 1:2. Check it with the position tool.</span></li>
+          <li><b>Size</b><span>Risk 1–3% of the account. <a href="risk.html#sizing" data-dest="02 / Risk">Use the calculator</a> to turn the stop distance into contracts.</span></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="section wrap" id="checklist-section" aria-labelledby="clTitle">
+    <div class="section-head">
+      <p class="label accent">Pre-trade checklist</p>
+      <h2 class="display" id="clTitle">Every box, every time</h2>
+    </div>
+    <div class="panel">
+      <div class="check-status">
+        <p class="display" id="checkVerdict" aria-live="polite">No trade yet.</p>
+        <div style="display:grid; gap: 1rem; justify-items: end;"><p class="label mono" id="checkCount">0/9</p><button type="button" class="text-btn" id="checkReset">Clear</button></div>
+      </div>
+      <div class="checklist" id="checklist">
+        <label class="check"><input type="checkbox" id="k1"><span>The one-hour trend is clear, and I know which direction I'm trading.</span><small>1H</small></label>
+        <label class="check"><input type="checkbox" id="k2"><span>A liquidity sweep happened on the five-minute, in that direction.</span><small>5M</small></label>
+        <label class="check"><input type="checkbox" id="k3"><span>The rejection after the sweep was fast, not a slow grind.</span><small>5M</small></label>
+        <label class="check"><input type="checkbox" id="k4"><span>The order block is marked wick to wick on the last opposite candle before the sweep.</span><small>5M</small></label>
+        <label class="check"><input type="checkbox" id="k5"><span>Price has retraced into the order block on the one-minute.</span><small>1M</small></label>
+        <label class="check"><input type="checkbox" id="k6"><span>The stop sits beyond liquidity, with a few ticks of clearance.</span><small>Risk</small></label>
+        <label class="check"><input type="checkbox" id="k7"><span>The target is a draw on liquidity, and the position tool shows at least 1:2.</span><small>Risk</small></label>
+        <label class="check"><input type="checkbox" id="k8"><span>The size risks between 1% and 3% of the account.</span><small>Risk</small></label>
+        <label class="check"><input type="checkbox" id="k9"><span>I've taken fewer than 3 trades today and haven't banked a +2% winner.</span><small>Psych</small></label>
+      </div>
+    </div>
+  </section>
+
+  <a class="next-link wrap" href="index.html#setup" data-dest="Home" data-cursor="REPLAY">
+    <span class="label accent">Back to the start</span>
+    <span class="display">Replay the setup →</span>
+  </a>
+</main>
+
+<footer class="foot wrap">
+  <div class="foot-row">
+    <p>Personal trading notes, shared for education. Not financial advice.</p>
+    <p class="label">flxxyt01 · 2026</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

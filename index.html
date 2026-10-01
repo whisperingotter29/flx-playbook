@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>flx Playbook</title>
+<meta name="description" content="A futures trading playbook by flxxyt01: wait for the liquidity sweep, buy the return to the order block, size every trade before you click.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<script>
+  (function () {
+    var r = document.documentElement; r.classList.add('js');
+    var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    try {
+      if (sessionStorage.getItem('nav')) { r.classList.add('covered'); sessionStorage.removeItem('nav'); }
+      else if (!sessionStorage.getItem('seen') && !reduce) { r.classList.add('preload'); }
+    } catch (e) {}
+    setTimeout(function () { r.classList.add('failsafe'); }, 6000);
+  })();
+</script>
+</head>
+<body>
+<div class="preloader" aria-hidden="true">
+  <p class="label pl-sym">MES1! · Micro E-mini S&amp;P 500 · loading chart</p>
+  <p class="pl-count">0000.00</p>
+  <div class="pl-bar"><i></i></div>
+</div>
+<div class="shutter" aria-hidden="true"><i class="sh-line"></i><span class="label sh-label">Loading</span></div>
+
+<header class="nav">
+  <a class="brand" href="index.html" aria-label="flx playbook home">flx<b>/</b>playbook</a>
+  <nav aria-label="Chapters">
+    <ul class="nav-links">
+      <li><a href="concepts.html" data-dest="01 / Concepts"><span>01</span>Concepts</a></li>
+      <li><a href="risk.html" data-dest="02 / Risk"><span>02</span>Risk</a></li>
+      <li><a href="execute.html" data-dest="03 / Execute"><span>03</span>Execute</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero wrap" aria-labelledby="heroTitle">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-meta">
+      <p class="label" data-rise>Futures playbook · MES1! / ES1!</p>
+      <p class="label" data-rise>By flxxyt01 · Rev. 2026</p>
+    </div>
+
+    <div class="hero-type">
+      <h1 class="display" id="heroTitle" aria-label="Wait for the sweep">
+        <span class="line l1" data-split>Wait for</span>
+        <span class="line l2" data-split>The sweep</span>
+      </h1>
+      <div class="hero-candle" aria-hidden="true"><i class="wick-top"></i><i class="body"></i><i class="wick-bot"></i></div>
+      <div class="hero-liq" aria-hidden="true"><span>SSL 5804.00 · SWEPT</span></div>
+    </div>
+
+    <div class="hero-foot">
+      <p class="lede" data-rise>Liquidity gets taken, price rejects fast, and I buy the return into the order block. <strong>One-hour bias, five-minute setup, one-minute entry.</strong> Stop and target sit at liquidity before I click.</p>
+      <div class="hero-ctas" data-rise>
+        <a class="btn magnetic" href="#setup" data-cursor="RUN">Run the setup <span class="arr" aria-hidden="true">↓</span></a>
+        <a class="btn ghost" href="concepts.html" data-dest="01 / Concepts">Read the concepts</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tape" aria-hidden="true">
+    <div class="tape-track">
+      <span><b>MES1!</b> $5 / pt</span><span><b>ES1!</b> $50 / pt</span><span class="up">1H bias</span><span>5M sweep</span><span>1M entry</span><span class="dn">Max 3 trades</span><span>Risk 1–3%</span><span class="up">Min 1:2 RR</span><span>Stop at +2%</span>
+      <span><b>MES1!</b> $5 / pt</span><span><b>ES1!</b> $50 / pt</span><span class="up">1H bias</span><span>5M sweep</span><span>1M entry</span><span class="dn">Max 3 trades</span><span>Risk 1–3%</span><span class="up">Min 1:2 RR</span><span>Stop at +2%</span>
+    </div>
+  </div>
+
+  <section class="scene-wrap" id="setup" aria-label="The setup, played candle by candle">
+    <div class="scene">
+      <canvas class="scene-canvas" aria-hidden="true"></canvas>
+      <div class="hud">
+        <p class="label">MES1! · 5M · Replay</p>
+        <p class="hud-price mono" id="hudPrice">5806.00</p>
+        <p class="label" id="hudStage">Stage 01 / 05</p>
+        <p class="label hud-pnl" id="hudPnl">Flat · waiting</p>
+      </div>
+      <div class="caps">
+        <article class="cap" data-from="0" data-to="20">
+          <p class="label accent">01 / 05 · Structure</p>
+          <h2 class="display cap-title">Read the trend</h2>
+          <p>Higher highs and higher lows on the hour chart. That means I only look for buys.</p>
+        </article>
+        <article class="cap" data-from="20" data-to="27">
+          <p class="label accent">02 / 05 · Liquidity</p>
+          <h2 class="display cap-title">Find the stops</h2>
+          <p>Orders rest beyond swing highs and lows. The high above is my target. The low below is the bait.</p>
+        </article>
+        <article class="cap" data-from="27" data-to="31.2">
+          <p class="label accent">03 / 05 · Sweep</p>
+          <h2 class="display cap-title">Let it run</h2>
+          <p>Price takes the low, triggers the stops, and snaps back. The rejection has to be fast, not slow.</p>
+        </article>
+        <article class="cap" data-from="31.2" data-to="35.6">
+          <p class="label accent">04 / 05 · Return</p>
+          <h2 class="display cap-title">Wait for the block</h2>
+          <p>The last down candle before the sweep is the order block. Mark it on 5M, then watch the retrace on 1M.</p>
+        </article>
+        <article class="cap" data-from="35.6" data-to="99">
+          <p class="label accent">05 / 05 · Execute</p>
+          <h2 class="display cap-title">Take the trade</h2>
+          <p>Entry at the block. Stop under the sweep with a few ticks of clearance. Target just under buy-side liquidity.</p>
+        </article>
+      </div>
+      <div class="scene-steps label" aria-hidden="true"><span>Structure</span><span>Liquidity</span><span>Sweep</span><span>Return</span><span>Execute</span></div>
+      <div class="scene-progress" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="rulesTitle">
+    <div class="section-head">
+      <p class="label accent">The rules</p>
+      <h2 class="display" id="rulesTitle">They don't move</h2>
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <p class="display rule-num">1–3%</p>
+        <div class="rule-copy"><p class="label">Risk per trade</p><h3>Small losses keep me in the game.</h3><p>On a $10,000 account that is $100 to $300 at risk, never more. I can take a long losing streak and still be here.</p></div>
+      </div>
+      <div class="rule">
+        <p class="display rule-num accent">1:2</p>
+        <div class="rule-copy"><p class="label">Minimum reward to risk</p><h3>Win one in three and I break even.</h3><p>Every winner pays twice what a loser costs, so a 50% hit rate is solidly profitable. I check it with the long or short position tool before entry.</p></div>
+      </div>
+      <div class="rule">
+        <p class="display rule-num">3</p>
+        <div class="rule-copy"><p class="label">Trades per day, max</p><h3>Three, even if all three lose.</h3><p>The cap is there to kill greed and revenge trading. The fourth idea waits for tomorrow.</p></div>
+      </div>
+      <div class="rule">
+        <p class="display rule-num accent">+2%</p>
+        <div class="rule-copy"><p class="label">Then I'm done</p><h3>One solid winner ends the session.</h3><p>A trade worth 2% or more of the account is the signal to stop. Don't give it back.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" aria-labelledby="chaptersTitle">
+    <div class="section-head">
+      <p class="label accent">Chapters</p>
+      <h2 class="display" id="chaptersTitle">The full playbook</h2>
+    </div>
+    <ol class="index-list">
+      <li class="idx-row"><a href="concepts.html" data-dest="01 / Concepts" data-img="img/fig-hh.webp" data-cursor="OPEN">
+        <span class="label accent">01</span>
+        <span><span class="display">Concepts</span><p>Highs and lows, market structure, liquidity, order blocks and inverse fair value gaps.</p></span>
+        <span class="go" aria-hidden="true">→</span></a></li>
+      <li class="idx-row"><a href="risk.html" data-dest="02 / Risk" data-img="img/fig-rr-box.webp" data-cursor="OPEN">
+        <span class="label accent">02</span>
+        <span><span class="display">Risk</span><p>Contract math, a position size calculator, reward to risk, and the daily limits.</p></span>
+        <span class="go" aria-hidden="true">→</span></a></li>
+      <li class="idx-row"><a href="execute.html" data-dest="03 / Execute" data-img="img/fig-ob-return.webp" data-cursor="OPEN">
+        <span class="label accent">03</span>
+        <span><span class="display">Execute</span><p>The two-step entry across three timeframes, plus a pre-trade checklist.</p></span>
+        <span class="go" aria-hidden="true">→</span></a></li>
+    </ol>
+  </section>
+
+  <div class="preview" aria-hidden="true"><img src="img/fig-hh.webp" alt=""></div>
+</main>
+
+<footer class="foot wrap">
+  <p class="display foot-big" aria-hidden="true">Sweep. Return. Execute.</p>
+  <div class="foot-row">
+    <p>Personal trading notes, shared for education. Not financial advice. Futures are leveraged, and a fast market can fill your stop worse than planned.</p>
+    <p class="label">flxxyt01 · 2026</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

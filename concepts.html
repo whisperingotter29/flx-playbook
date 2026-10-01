@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concepts · flx Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<script>
+  (function () {
+    var r = document.documentElement; r.classList.add('js');
+    try { if (sessionStorage.getItem('nav')) { r.classList.add('covered'); sessionStorage.removeItem('nav'); } } catch (e) {}
+    setTimeout(function () { r.classList.add('failsafe'); }, 6000);
+  })();
+</script>
+</head>
+<body>
+<div class="shutter" aria-hidden="true"><i class="sh-line"></i><span class="label sh-label">Loading</span></div>
+
+<header class="nav">
+  <a class="brand" href="index.html" data-dest="Home" aria-label="flx playbook home">flx<b>/</b>playbook</a>
+  <nav aria-label="Chapters">
+    <ul class="nav-links">
+      <li><a href="concepts.html" aria-current="page"><span>01</span>Concepts</a></li>
+      <li><a href="risk.html" data-dest="02 / Risk"><span>02</span>Risk</a></li>
+      <li><a href="execute.html" data-dest="03 / Execute"><span>03</span>Execute</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero wrap">
+    <p class="label accent" data-rise>01 / Concepts · Fundamentals</p>
+    <h1 class="display" aria-label="Read the chart">
+      <span class="line" data-split>Read</span>
+      <span class="line dim" data-split>the chart</span>
+    </h1>
+    <div class="page-hero-row">
+      <p class="lede" data-rise>Five building blocks, each one used by the next. <strong>Swing points define structure, structure sets direction, liquidity sits at the swing points,</strong> and order blocks and gaps mark where price is likely to react.</p>
+      <div class="tf-strip" data-rise><span class="chip">Highs &amp; lows</span><span class="chip">Structure</span><span class="chip">Liquidity</span><span class="chip">Order blocks</span><span class="chip">IFVG</span></div>
+    </div>
+  </section>
+
+  <!-- 1.1 -->
+  <section class="chapter wrap" id="highs-lows" aria-labelledby="c1">
+    <div class="chapter-meta">
+      <p class="chapter-num">1.1</p>
+      <h2 class="display" id="c1">Highs and lows</h2>
+      <p class="label">Used to determine trend</p>
+    </div>
+    <div class="chapter-body">
+      <dl class="defs">
+        <div><dt>High</dt><dd>A green candle followed by a red one. The high is the highest wick of those two candles.</dd><span class="tag" style="color: var(--bull)">Green → Red</span></div>
+        <div><dt>Low</dt><dd>A red candle followed by a green one. The low is the lowest wick of those two candles.</dd><span class="tag" style="color: var(--bear)">Red → Green</span></div>
+      </dl>
+      <div class="figs">
+        <figure class="fig"><div class="fig-frame" style="aspect-ratio: 874 / 890"><img src="img/fig-high.webp" alt="Chart marking a high at the top wick where a green candle is followed by a red one" loading="lazy" width="874" height="890"></div><figcaption class="label"><span>Fig 1.1a</span><span>High</span></figcaption></figure>
+        <figure class="fig"><div class="fig-frame" style="aspect-ratio: 940 / 804"><img src="img/fig-low.webp" alt="Chart marking a low at the lowest wick where a red candle is followed by a green one" loading="lazy" width="940" height="804"></div><figcaption class="label"><span>Fig 1.1b</span><span>Low</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.2 -->
+  <section class="chapter wrap" id="structure" aria-labelledby="c2">
+    <div class="chapter-meta">
+      <p class="chapter-num">1.2</p>
+      <h2 class="display" id="c2">Market structure</h2>
+      <p class="label">Tells you which direction to enter</p>
+    </div>
+    <div class="chapter-body">
+      <div class="prose">
+        <p>If price is trending up, or has bullish market structure, <strong>I look to buy.</strong> If it's trending down, I look to sell. Structure is read by comparing each new swing to the one before it.</p>
+      </div>
+      <dl class="defs">
+        <div><dt>HH · Higher high</dt><dd>Price makes a higher high than the previous high.</dd><span class="tag" style="color: var(--bull)">Bullish</span></div>
+        <div><dt>HL · Higher low</dt><dd>Price makes a higher low than the previous low.</dd><span class="tag" style="color: var(--bull)">Bullish</span></div>
+        <div><dt>LL · Lower low</dt><dd>Price makes a lower low than the previous low.</dd><span class="tag" style="color: var(--bear)">Bearish</span></div>
+        <div><dt>LH · Lower high</dt><dd>Price makes a lower high than the previous high.</dd><span class="tag" style="color: var(--bear)">Bearish</span></div>
+      </dl>
+      <p class="note"><strong>Trends break all the time,</strong> especially on lower timeframes. That's why structure is most useful on higher timeframes, as a filter for which trades to take.</p>
+    </div>
+  </section>
+
+  <section class="pin-me" aria-label="Market structure examples">
+    <div class="hscroll wrap">
+      <div class="htrack">
+        <figure class="fig"><div class="fig-frame"><img src="img/fig-hh.webp" alt="Chart where price creates a higher high above the previous high" loading="lazy" width="1116" height="890"></div><figcaption class="label"><span>Fig 1.2a · Bullish</span><span>Higher high</span></figcaption></figure>
+        <figure class="fig"><div class="fig-frame"><img src="img/fig-hl.webp" alt="Chart where price creates a higher low above the previous low" loading="lazy" width="930" height="702"></div><figcaption class="label"><span>Fig 1.2b · Bullish</span><span>Higher low</span></figcaption></figure>
+        <figure class="fig"><div class="fig-frame"><img src="img/fig-ll.webp" alt="Chart where price creates a lower low below the previous low" loading="lazy" width="882" height="806"></div><figcaption class="label"><span>Fig 1.2c · Bearish</span><span>Lower low</span></figcaption></figure>
+        <figure class="fig"><div class="fig-frame"><img src="img/fig-lh.webp" alt="Chart where price creates a lower high below the previous high" loading="lazy" width="818" height="886"></div><figcaption class="label"><span>Fig 1.2d · Bearish</span><span>Lower high</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.3 -->
+  <section class="chapter wrap" id="liquidity" aria-labelledby="c3">
+    <div class="chapter-meta">
+      <p class="chapter-num">1.3</p>
+      <h2 class="display" id="c3">Liquidity</h2>
+      <p class="label">Resting orders in the market</p>
+    </div>
+    <div class="chapter-body">
+      <div class="prose">
+        <p>Liquidity is the <strong>stop losses and take profits that haven't been hit yet.</strong> Where do people put them? At swing highs and swing lows, the pivot areas of the market. Those levels are where price tends to travel.</p>
+      </div>
+      <dl class="defs">
+        <div><dt>Valid swing high</dt><dd>The candle has the highest wick compared with the 2–3 candles on its left and right.</dd><span class="tag" style="color: var(--accent)">Buy-side liquidity above</span></div>
+        <div><dt>Valid swing low</dt><dd>The candle has the lowest wick compared with the 2–3 candles on its left and right.</dd><span class="tag" style="color: var(--accent)">Sell-side liquidity below</span></div>
+      </dl>
+      <figure class="fig"><div class="fig-frame" style="aspect-ratio: 848 / 704"><img src="img/fig-liquidity.webp" alt="Chart with swing highs marked by blue lines and swing lows marked by red lines" loading="lazy" width="848" height="704"></div><figcaption class="label"><span>Fig 1.3</span><span>Swing highs (blue) and swing lows (red)</span></figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 1.4 -->
+  <section class="chapter wrap" id="order-blocks" aria-labelledby="c4">
+    <div class="chapter-meta">
+      <p class="chapter-num">1.4</p>
+      <h2 class="display" id="c4">Order blocks</h2>
+      <p class="label">Where institutions left orders</p>
+    </div>
+    <div class="chapter-body">
+      <div class="prose">
+        <p>An order block is the area left behind after a sharp move or a liquidity sweep: the zone where institutional traders placed their buy or sell orders. <strong>Mark it from the bottom wick to the top wick of the candle.</strong></p>
+      </div>
+      <dl class="defs">
+        <div><dt>Bullish OB</dt><dd>The last down candle before a liquidity sweep.</dd><span class="tag" style="color: var(--bull)">Look for buys</span></div>
+        <div><dt>Bearish OB</dt><dd>The last up candle before a liquidity sweep.</dd><span class="tag" style="color: var(--bear)">Look for sells</span></div>
+      </dl>
+      <div class="figs">
+        <figure class="fig"><div class="fig-frame" style="aspect-ratio: 1600 / 1146"><img src="img/fig-ob-bull.webp" alt="Liquidity sweep below a level followed by a marked bullish order block" loading="lazy" width="1600" height="1146"></div><figcaption class="label"><span>Fig 1.4a</span><span>Bullish OB after a sweep</span></figcaption></figure>
+        <figure class="fig"><div class="fig-frame" style="aspect-ratio: 1378 / 1084"><img src="img/fig-ob-bear.webp" alt="Liquidity sweep above a level followed by a marked bearish order block and a drop" loading="lazy" width="1378" height="1084"></div><figcaption class="label"><span>Fig 1.4b</span><span>Bearish OB after a sweep</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1.5 -->
+  <section class="chapter wrap" id="ifvg" aria-labelledby="c5">
+    <div class="chapter-meta">
+      <p class="chapter-num">1.5</p>
+      <h2 class="display" id="c5">Inverse FVG</h2>
+      <p class="label">When a gap gets disrespected</p>
+    </div>
+    <div class="chapter-body">
+      <dl class="defs">
+        <div><dt>Fair value gap</dt><dd>A three-candle pattern where the middle candle isn't overlapped by the wicks of the first or third. It shows an imbalance and a strong move. Price should fill into the gap, then continue in that direction.</dd><span class="tag" style="color: var(--accent)">Imbalance</span></div>
+        <div><dt>Inverse FVG</dt><dd>Price fills the gap but then crosses straight through it instead of continuing. The gap has been disrespected and flips its meaning.</dd><span class="tag" style="color: var(--accent)">Flipped gap</span></div>
+      </dl>
+      <div class="pair">
+        <figure class="fig"><div class="fig-frame" style="aspect-ratio: 1038 / 822"><img src="img/fig-ifvg.webp" alt="Bearish fair value gap that price pushes up through, creating an inverse FVG" loading="lazy" width="1038" height="822"></div><figcaption class="label"><span>Fig 1.5a</span><span>Bearish FVG becomes inverse</span></figcaption></figure>
+        <figure class="fig"><div class="fig-frame" style="aspect-ratio: 452 / 880"><img src="img/fig-fvg-bull.webp" alt="Bullish fair value gap marked between three candles" loading="lazy" width="452" height="880"></div><figcaption class="label"><span>Fig 1.5b</span><span>Bullish FVG</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <a class="next-link wrap" href="risk.html" data-dest="02 / Risk" data-cursor="NEXT">
+    <span class="label accent">Next chapter · 02</span>
+    <span class="display">Risk →</span>
+  </a>
+</main>
+
+<footer class="foot wrap">
+  <div class="foot-row">
+    <p>Personal trading notes, shared for education. Not financial advice.</p>
+    <p class="label">flxxyt01 · 2026</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>

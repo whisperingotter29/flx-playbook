@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Risk · flx Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/site.css">
+<script>
+  (function () {
+    var r = document.documentElement; r.classList.add('js');
+    try { if (sessionStorage.getItem('nav')) { r.classList.add('covered'); sessionStorage.removeItem('nav'); } } catch (e) {}
+    setTimeout(function () { r.classList.add('failsafe'); }, 6000);
+  })();
+</script>
+</head>
+<body>
+<div class="shutter" aria-hidden="true"><i class="sh-line"></i><span class="label sh-label">Loading</span></div>
+
+<header class="nav">
+  <a class="brand" href="index.html" data-dest="Home" aria-label="flx playbook home">flx<b>/</b>playbook</a>
+  <nav aria-label="Chapters">
+    <ul class="nav-links">
+      <li><a href="concepts.html" data-dest="01 / Concepts"><span>01</span>Concepts</a></li>
+      <li><a href="risk.html" aria-current="page"><span>02</span>Risk</a></li>
+      <li><a href="execute.html" data-dest="03 / Execute"><span>03</span>Execute</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="page-hero wrap">
+    <p class="label accent" data-rise>02 / Risk · Management &amp; psychology</p>
+    <h1 class="display" aria-label="Size it first">
+      <span class="line" data-split>Size it</span>
+      <span class="line dim" data-split>first</span>
+    </h1>
+    <div class="page-hero-row">
+      <p class="lede" data-rise>The setup decides where I enter. <strong>Risk decides whether I'm still trading next month.</strong> Know the contract, size to the stop, and stop trading when the day is done.</p>
+      <div class="tf-strip" data-rise><span class="chip accent">1–3% per trade</span><span class="chip bull">Min 1:2</span><span class="chip bear">Max 3 / day</span></div>
+    </div>
+  </section>
+
+  <!-- 2.1 contract -->
+  <section class="chapter wrap" id="contract" aria-labelledby="r1">
+    <div class="chapter-meta">
+      <p class="chapter-num">2.1</p>
+      <h2 class="display" id="r1">Know the contract</h2>
+      <p class="label">Points to dollars</p>
+    </div>
+    <div class="chapter-body">
+      <div class="prose">
+        <p>Futures let you control a large position with a small margin deposit, which is where the leverage comes from. What matters for sizing is the <strong>dollar value of one point</strong>. The micro is exactly one tenth of the E-mini, so it's the one to learn on.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="contract">
+          <thead><tr><th scope="col">Contract</th><th scope="col">Per point</th><th scope="col">Per tick (0.25)</th><th scope="col">10 points</th><th scope="col">20 points</th></tr></thead>
+          <tbody>
+            <tr><td>MES1! · Micro E-mini S&amp;P 500</td><td class="mono">$5</td><td class="mono">$1.25</td><td class="mono">$50</td><td class="mono">$100</td></tr>
+            <tr><td>ES1! · E-mini S&amp;P 500</td><td class="mono">$50</td><td class="mono">$12.50</td><td class="mono">$500</td><td class="mono">$1,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Values are per contract. <strong>Ten MES move the same dollar amount as one ES,</strong> which makes the micro the finer tool for sizing a small account.</p>
+    </div>
+  </section>
+
+  <!-- 2.2 calculator -->
+  <section class="chapter wrap" id="sizing" aria-labelledby="r2">
+    <div class="chapter-meta">
+      <p class="chapter-num">2.2</p>
+      <h2 class="display" id="r2">Position size</h2>
+      <p class="label">Risk 1–3% of capital</p>
+    </div>
+    <div class="chapter-body">
+      <div class="prose"><p>Risking a small slice of the account per trade <strong>lets me absorb many losses before the account is gone.</strong> Set the stop from the chart first, then let the math choose the size.</p></div>
+      <form class="panel calc" id="calc" autocomplete="off">
+        <div class="fields">
+          <div class="field"><label for="acct">Account size (USD)</label><input type="number" id="acct" value="10000" min="0" step="100" inputmode="decimal"></div>
+          <div class="field"><label for="riskpct">Risk per trade <output id="riskpctOut" for="riskpct">1.0%</output></label><input type="range" id="riskpct" min="0.5" max="3" step="0.5" value="1"></div>
+          <div class="field">
+            <span class="label" id="contractLbl">Contract</span>
+            <div class="seg" role="radiogroup" aria-labelledby="contractLbl">
+              <input type="radio" name="contract" id="cMES" value="MES" checked><label for="cMES">MES · $5/pt</label>
+              <input type="radio" name="contract" id="cES" value="ES"><label for="cES">ES · $50/pt</label>
+            </div>
+          </div>
+          <div class="field"><label for="stop">Stop distance (points)</label><input type="number" id="stop" value="4.5" min="0" step="0.25" inputmode="decimal"></div>
+        </div>
+        <div class="readout" aria-live="polite">
+          <div class="big"><span class="label">Contracts</span><span class="v" id="oContracts">4</span></div>
+          <div><span class="label">Max risk</span><span class="v" id="oMax">$100.00</span></div>
+          <div><span class="label">Risk per contract</span><span class="v" id="oPer">$22.50</span></div>
+          <div><span class="label">Actual risk</span><span class="v bear" id="oActual">$90.00</span></div>
+          <div><span class="label">1:2 target</span><span class="v" id="oTarget">9.00 pts</span></div>
+          <div><span class="label">Reward at 1:2</span><span class="v bull" id="oReward">$180.00</span></div>
+          <div><span class="label">Account survives</span><span class="v" id="oLives">111 losses</span></div>
+          <p class="calc-msg big" id="calcMsg">Example values.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 2.3 RR -->
+  <section class="chapter wrap" id="rr" aria-labelledby="r3">
+    <div class="chapter-meta">
+      <p class="chapter-num">2.3</p>
+      <h2 class="display" id="r3">Aim for 1:2</h2>
+      <p class="label">Reward to risk</p>
+    </div>
+    <div class="chapter-body">
+      <div class="prose"><p>When each winner pays double what a loser costs, <strong>I only need to win one trade in three to break even.</strong> At 50% I'm clearly profitable. The long and short position tools on the chart show the ratio before I enter.</p></div>
+      <div class="panel be" aria-label="Win rate needed to break even">
+        <p class="label">Win rate needed to break even</p>
+        <div class="be-row"><span class="mono">1:1</span><span class="be-bar"><i style="width: 50%"></i></span><span class="mono">50.0%</span></div>
+        <div class="be-row hl"><span class="mono">1:2</span><span class="be-bar"><i style="width: 33.33%"></i></span><span class="mono">33.3%</span></div>
+        <div class="be-row"><span class="mono">1:3</span><span class="be-bar"><i style="width: 25%"></i></span><span class="mono">25.0%</span></div>
+      </div>
+      <div class="pair">
+        <div class="prose">
+          <p class="label accent">Example · Short · May 27, 2026</p>
+          <p>I risked <strong>4.5 points, about $25</strong>. At that size I could lose the same trade around 200 times before the account was gone.</p>
+          <p>The 1:2 target locked in the gain even though price kept falling afterwards. Taking the planned profit beats guessing how far it will run.</p>
+        </div>
+        <figure class="fig"><div class="fig-frame contain" style="aspect-ratio: 582 / 828"><img src="img/fig-rr-box.webp" alt="Short position box with a 4.5 point stop and a 9 point target, risk to reward ratio of 2" loading="lazy" width="582" height="828"></div><figcaption class="label"><span>Fig 2.3</span><span>1:2 short</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2.4 draw on liquidity -->
+  <section class="chapter wrap" id="draw" aria-labelledby="r4">
+    <div class="chapter-meta">
+      <p class="chapter-num">2.4</p>
+      <h2 class="display" id="r4">Target the draw</h2>
+      <p class="label">Risk management, part 2</p>
+    </div>
+    <div class="chapter-body">
+      <div class="prose"><p>Price wants to reach liquidity. So instead of a fixed ratio, <strong>I aim at areas where price is likely to react.</strong> In this long, the take profit sits at a prominent liquidity level (blue line) and the stop sits below another pool of liquidity.</p></div>
+      <figure class="fig"><div class="fig-frame" style="aspect-ratio: 1654 / 828"><img src="img/fig-draw-liquidity.webp" alt="Long position with the target at a liquidity level marked by a blue line and the stop below another liquidity area" loading="lazy" width="1654" height="828"></div><figcaption class="label"><span>Fig 2.4</span><span>Target at liquidity</span></figcaption></figure>
+      <p class="note"><strong>Clearance:</strong> when the stop goes at liquidity, leave a few ticks past the level so a wick can't take you out. A candle body shouldn't close in that area.</p>
+    </div>
+  </section>
+
+  <!-- 2.5 psychology -->
+  <section class="chapter wrap" id="psychology" aria-labelledby="r5">
+    <div class="chapter-meta">
+      <p class="chapter-num">2.5</p>
+      <h2 class="display" id="r5">Psychology</h2>
+      <p class="label">Stop before greed starts</p>
+    </div>
+    <div class="chapter-body">
+      <div class="psy">
+        <div><p class="display">3 max</p><p class="label">Trades per day</p><p>Even if I lose all three, three is always the limit. It prevents greed and revenge trading.</p></div>
+        <div><p class="display" style="color: var(--accent)">+2% stop</p><p class="label">One solid winner</p><p>If a trade makes 2% or more of the account, I stop for the day. A big enough gain is the sign not to get greedy.</p></div>
+      </div>
+      <div class="panel session" id="session">
+        <div class="check-status"><p class="label">Today's session · tap a slot to log it</p><button type="button" class="text-btn" id="sessionReset">Reset</button></div>
+        <div class="slots">
+          <button type="button" class="slot" data-s="empty"><span class="display">1</span><span class="label">Open</span></button>
+          <button type="button" class="slot" data-s="empty"><span class="display">2</span><span class="label">Open</span></button>
+          <button type="button" class="slot" data-s="empty"><span class="display">3</span><span class="label">Open</span></button>
+        </div>
+        <p class="session-status" id="sessionStatus" aria-live="polite">3 of 3 trades left today.</p>
+      </div>
+    </div>
+  </section>
+
+  <a class="next-link wrap" href="execute.html" data-dest="03 / Execute" data-cursor="NEXT">
+    <span class="label accent">Next chapter · 03</span>
+    <span class="display">Execute →</span>
+  </a>
+</main>
+
+<footer class="foot wrap">
+  <div class="foot-row">
+    <p>Personal trading notes, shared for education. Not financial advice. Futures are leveraged, and a fast market can fill your stop worse than planned.</p>
+    <p class="label">flxxyt01 · 2026</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/site.js"></script>
+</body>
+</html>
